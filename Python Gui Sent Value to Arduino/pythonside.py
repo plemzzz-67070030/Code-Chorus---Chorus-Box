@@ -1,21 +1,43 @@
-import serial
+import serial 
+import customtkinter 
+from customtkinter import *
+from PIL import Image
 import tkinter as tk
-ser = serial.Serial("COM3",baudrate=9600,timeout=1)
+import pywinstyles 
+
+ser = serial.Serial("COM4",baudrate=9600,timeout=1)
 def song1 ():
     ser.write(b'o')
 def song2 ():
     ser.write(b'x')
 
-root = tk.Tk()
-root.option_add("*Font", "console 20")
+root = customtkinter.CTk()
+root.geometry("500x350")
 root.title("ChorusBox Gui Alpha")
+pywinstyles.apply_style(root, "aero") # just add this line 
 
-tk.Label(root , text= "ChorusBox Project").pack()
+set_appearance_mode("dark")
+darklight = Image.open("image.png") #darklight button
+play = Image.open("video-web-play.png") #play button
 
-tk.Label(root, text= "Select A Song :").place(relx=0,rely=0.01)
-
-B1 = tk.Button(root, text="open led",command=song1).pack()
-
-B2 = tk.Button(root, text="close led",command=song2).pack()
-
+B1 = customtkinter.CTkButton(root, text="Night Dancer", fg_color="#4a2bba" ,
+                             corner_radius=32 , hover_color='#4158D0' , border_color="#FFCC70" , 
+                             image=CTkImage(dark_image=play,light_image=play), command=song1)
+B1.pack(padx=20, pady=20)
+B2 = customtkinter.CTkButton(root, text="Evangelion", fg_color="#4a2bba" ,
+                             corner_radius=32 , hover_color='#4158D0' , border_color="#FFCC70" , 
+                             image=CTkImage(dark_image=play,light_image=play), command=song2)
+B2.pack(padx=20, pady=20)
+B3 = customtkinter.CTkButton(root, text="Song 3", fg_color="#4a2bba" ,
+                             corner_radius=32 , hover_color='#4158D0' , border_color="#FFCC70" , 
+                             image=CTkImage(dark_image=play,light_image=play))
+B3.pack(padx=20, pady=20)
+B4 = customtkinter.CTkButton(root, text="Song 4", fg_color="#4a2bba" ,
+                             corner_radius=32 , hover_color='#4158D0' , border_color="#FFCC70" , 
+                             image=CTkImage(dark_image=play,light_image=play))
+B4.pack(padx=20, pady=20)
+B5 = customtkinter.CTkButton(root, text="Song 5", fg_color="#4a2bba" ,
+                             corner_radius=32 , hover_color='#4158D0' , border_color="#FFCC70" , 
+                             image=CTkImage(dark_image=play,light_image=play))
+B5.pack(padx=20, pady=20)
 root.mainloop()
