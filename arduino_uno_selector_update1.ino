@@ -1,4 +1,4 @@
-String python;
+char python;
 int buzzer_Melody = 12;
 
 float notes[] = {130.8, 138.6, 146.8, 155.6, 164.8, 174.6, 185.0, 196.0, 207.7, 220, 233.1, 246.9}; // C, C#, D, D#, E, F, F#, G, G#, A, A#, B
@@ -10,16 +10,15 @@ void setup() {
 
 void loop() {
   if (Serial.available() > 0) { // เช็คว่ามีข้อมูลจาก Serial หรือไม่
-    python = Serial.readString(); // อ่านข้อมูลจาก Serial
-    python.trim(); // ลบช่องว่าง
+    python = Serial.read(); // อ่านข้อมูลจาก Serial
 
-    if (python == "a") { 
+    if (python == 'a') { 
       Evangelion(); // เรียกฟังก์ชันเล่นเพลง
     }
-    else if (python == "b") {
+    else if (python == 'b') {
       conan();
     }
-    else if (python == "c") {
+    else if (python == 'c') {
       NightDancer();
     }
   }
