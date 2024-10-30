@@ -131,35 +131,35 @@ yorunikakeruimg = ct.CTkImage(light_image=Image.open('images/yorunikakeru.jpg'),
 
 #maintab
 ts = ct.CTkLabel(mainfram,width= 300,height= 200,fg_color="transparent",font=(fontsfamily,20,"bold"),text="Select Music:")
-ts.place(x=10,y=-50)
+ts.place(relx=0, rely=-0.05)
 
 a1 = ct.CTkLabel(mainfram, text="", image=nightdancerimg)
-a1.place(x=80,y=100)
+a1.place(relx=0.052,rely=0.11)
 b1 = ct.CTkButton(master=mainfram,text="▶ NIGHT DANCER",font=(fontsfamily, 24),command=song3, height=50 , width= 400, fg_color='#40589c')
-b1.place(x=80,y=370)
+b1.place(relx=0.052,rely=0.41)
 
 a2 = ct.CTkLabel(mainfram, text="", image=evangelionimg)
-a2.place(x=630,y=100)
+a2.place(relx=0.372,rely=0.11)
 b2 = ct.CTkButton(master=mainfram,text="▶ Cruel Angel's Thesis",font=(fontsfamily, 24),command=song1, height=50 , width= 400, fg_color='#40589c')
-b2.place(x=630,y=370)
+b2.place(relx=0.372,y=370)
 
 a3 = ct.CTkLabel(mainfram, text="", image=detectiveconanimg)
-a3.place(x=1180,y=100)
+a3.place(relx=0.692,rely=0.11)
 b3 = ct.CTkButton(master=mainfram,text='▶ Detective Conan',font=(fontsfamily, 24),command=song2, height=50 , width= 400, fg_color='#40589c')
-b3.place(x=1180,y=370)
+b3.place(relx=0.692,rely=0.41)
 
 a4 = ct.CTkLabel(mainfram, text="", image=chihatanimg)
-a4.place(x=350,y=460)
+a4.place(relx=0.207,rely=0.51)
 b4 = ct.CTkButton(master=mainfram,text='▶ Chi-Ha-Tan',font=(fontsfamily, 24),command=song4, height=50 , width= 400, fg_color='#40589c')
-b4.place(x=350,y=730)
+b4.place(relx=0.207,rely=0.81)
 
 a5 = ct.CTkLabel(mainfram, text="", image=yorunikakeruimg)
-a5.place(x=900,y=460)
+a5.place(relx=0.54,rely=0.51)
 b5 = ct.CTkButton(master=mainfram,text='▶ Yoru ni kakeru',font=(fontsfamily, 24),command=song5, height=50 , width= 400, fg_color='#40589c')
-b5.place(x=900,y=730)
+b5.place(relx=0.54,rely=0.81)
 
 bstop = ct.CTkButton(master=mainfram, width=180, height=50 , text="■ Stop Music", font=("Segoe UI", 18, "bold") , command=stop , fg_color="#ed4564")
-bstop.place(x=735,y=820)
+bstop.place(relx=0.438,rely=0.92)
 
 #Status Bar
 T = ct.CTkLabel(statusbar,height= 30,fg_color="transparent",font=(fontsfamily,14),text=(f"Now Playing : {PlayingSong} ") )
