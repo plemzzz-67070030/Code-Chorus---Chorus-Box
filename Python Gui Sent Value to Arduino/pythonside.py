@@ -1,21 +1,21 @@
 #User Interface Upgraded
 import customtkinter as ct
-import serial as ser
+import serial 
 from tkinter import * 
 import time
 import pywinstyles #pip install pywinstyles
-#ser.Serial("COM3",baudrate=9600,timeout=1)
+ser = serial.Serial("COM4",baudrate=9600,timeout=1)
 
 song1Name = "Evangelion - Cruel Angel Thesis"
-song2Name = "Night Dancer"
-song3Name = "Conan OST"
+song2Name = "Conan OST"
+song3Name = "Night Dancer"
 song4Name = ""
 song5Name = ""
 
 NameList = ["67070029 ชยกร","6707000","6707000","6707000","6707000"] #ใส่ชื่อคนที่ละคน
 stylelist = ["aero","acrylic","transparent","optimised","win7","inverse","native","popup","dark","mica","normal"] #โหมดหน้าต่าง
 
-PlayingSong = "" #ฝากภาคภูมิดูให้หน่อย
+PlayingSong = ""
 
 #function
 
@@ -24,40 +24,40 @@ def update ():
     T.configure(text=f"Now Playing: {PlayingSong}")
 
 def song1 ():
-    #ser.write('a')
+
+    ser.write(b'a')
     global PlayingSong
     PlayingSong = song1Name
     T.configure(text=f"Playing: Stop")
     update()
 
 def song2 ():
-    #ser.write('b')
+    ser.write(b'b')
     global PlayingSong
     PlayingSong = song2Name
     T.configure(text=f"Playing: Stop")
     update()
 
 def song3 ():
-    #ser.write('c')
+    ser.write(b'c')
     global PlayingSong
     PlayingSong = song3Name
     update()
 
 def song4 ():
-    #ser.write('d')
+    ser.write(b'd')
     global PlayingSong
     PlayingSong = song4Name
     update()
 
 def song5 ():
-    #ser.write('e')
-    
+    ser.write(b'e')
     global PlayingSong
     PlayingSong = song5Name
     update()
 
 def stop() :
-    #ser.write('stop')
+    ser.write(b'stop')
     global PlayingSong
     PlayingSong = "Stop"
     update()
