@@ -137,6 +137,10 @@ songtextsize = 20
 
 
 xshift = -0.03
+left_image = ct.CTkImage(light_image=Image.open('images/logo it.png'),
+dark_image=Image.open('images/logo it.png'),size=(200, 200))
+left_image_label = ct.CTkLabel(l_custom, image=left_image, text="")
+left_image_label.pack(pady=100)
 
 #maintab
 ts = ct.CTkLabel(mainfram,width= 300,height= 200,fg_color="transparent",font=(fontsfamily,20,"bold"),text="Select Music:")
