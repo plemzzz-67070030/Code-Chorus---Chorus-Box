@@ -5,7 +5,7 @@ from tkinter import *
 import time
 from PIL import Image, ImageTk
 import pywinstyles #pip install pywinstyles
-ser = serial.Serial("COM4",baudrate=9600,timeout=1)
+#ser = serial.Serial("COM4",baudrate=9600,timeout=1)
 
 song1Name = "Evangelion - Cruel Angel Thesis"
 song2Name = "Conan OST"
@@ -27,39 +27,39 @@ def update ():
 
 def song1 ():
 
-    ser.write(b'a')
+    #ser.write(b'a')
     global PlayingSong
     PlayingSong = song1Name
     T.configure(text=f"Playing: Stop")
     update()
 
 def song2 ():
-    ser.write(b'b')
+    #ser.write(b'b')
     global PlayingSong
     PlayingSong = song2Name
     T.configure(text=f"Playing: Stop")
     update()
 
 def song3 ():
-    ser.write(b'c')
+    ##ser.write(b'c')
     global PlayingSong
     PlayingSong = song3Name
     update()
 
 def song4 ():
-    ser.write(b'd')
+    #ser.write(b'd')
     global PlayingSong
     PlayingSong = song4Name
     update()
 
 def song5 ():
-    ser.write(b'e')
+    #ser.write(b'e')
     global PlayingSong
     PlayingSong = song5Name
     update()
 
 def stop() :
-    ser.write(b'stop')
+    #ser.write(b'stop')
     global PlayingSong
     PlayingSong = "Stop"
     update()
@@ -96,22 +96,10 @@ l_custom.pack(side="left",fill="y",padx = pad)
 
 mainfram.pack(side="top",fill = "both" ,expand = True )
 
-#topbar
-l1 = ct.CTkLabel(toolbar,height=20,fg_color="transparent",font=(fontsfamily,20),text="CHORUS BOX GUI 3.5")
-l1.pack(side = "top" , fill = "y",pady = pad,padx = pad)
-
-#leftbar
-S = ct.CTkLabel(l_custom,fg_color="transparent",height=20,font=(fontsfamily,20),text="Developer Name")
-S.pack(side = "top" , fill = "y",pady = pad,padx = pad)
-for i in range(len(NameList)):
-    n1 = ct.CTkLabel(l_custom,height=20,font=(fontsfamily,15),text=NameList[i])
-    n1.pack(side = "top" , fill = "y",pady = pad,padx = pad)
-M = ct.CTkComboBox(l_custom,width=200,values=stylelist,command=change_windowstyles)
-M.pack(side = "bottom" , fill = "x")
-
-songtextsize = 20
-
 ###IMAGE
+logo = ct.CTkImage(light_image=Image.open('images/logo.png'),
+    dark_image=Image.open('images/logo.png'),
+    size= (40,40))
 nightdancerimg = ct.CTkImage(light_image=Image.open('images/nightdancer.jpg'),
 	dark_image=Image.open('images/nightdancer.jpg'),
 	size=(400,250))
@@ -129,34 +117,55 @@ yorunikakeruimg = ct.CTkImage(light_image=Image.open('images/yorunikakeru.jpg'),
 	size=(400,250))
 ###
 
+#topbar
+l1 = ct.CTkLabel(toolbar,height=20,fg_color="transparent",font=(fontsfamily,20),text="CHORUS BOX GUI 3.5")
+l1.pack(side = "top" , fill = "y",pady = pad,padx = pad)
+lo = ct.CTkLabel(toolbar,height=10,width=10,text="",image=logo)
+lo.place(relx = 0.001,rely = 0.035)
+
+#leftbar
+S = ct.CTkLabel(l_custom,fg_color="transparent",height=20,font=(fontsfamily,20),text="Developer Name")
+S.pack(side = "top" , fill = "y",pady = pad,padx = pad)
+for i in range(len(NameList)):
+    n1 = ct.CTkLabel(l_custom,height=20,font=(fontsfamily,15),text=NameList[i])
+    n1.pack(side = "top" , fill = "y",pady = pad,padx = pad)
+M = ct.CTkComboBox(l_custom,width=200,values=stylelist,command=change_windowstyles)
+M.pack(side = "bottom" , fill = "x")
+
+songtextsize = 20
+
+
+
+xshift = -0.03
+
 #maintab
 ts = ct.CTkLabel(mainfram,width= 300,height= 200,fg_color="transparent",font=(fontsfamily,20,"bold"),text="Select Music:")
-ts.place(relx=0, rely=-0.05)
+ts.place(relx=0 + xshift, rely=-0.08)
 
 a1 = ct.CTkLabel(mainfram, text="", image=nightdancerimg)
-a1.place(relx=0.052,rely=0.11)
+a1.place(relx=0.052 + xshift,rely=0.11)
 b1 = ct.CTkButton(master=mainfram,text="▶ NIGHT DANCER",font=(fontsfamily, 24),command=song3, height=50 , width= 400, fg_color='#40589c')
-b1.place(relx=0.052,rely=0.41)
+b1.place(relx=0.052 + xshift,rely=0.41)
 
 a2 = ct.CTkLabel(mainfram, text="", image=evangelionimg)
-a2.place(relx=0.372,rely=0.11)
+a2.place(relx=0.372 + xshift,rely=0.11)
 b2 = ct.CTkButton(master=mainfram,text="▶ Cruel Angel's Thesis",font=(fontsfamily, 24),command=song1, height=50 , width= 400, fg_color='#40589c')
-b2.place(relx=0.372,y=370)
+b2.place(relx=0.372 + xshift,rely=0.41)
 
 a3 = ct.CTkLabel(mainfram, text="", image=detectiveconanimg)
-a3.place(relx=0.692,rely=0.11)
+a3.place(relx=0.692 + xshift,rely=0.11)
 b3 = ct.CTkButton(master=mainfram,text='▶ Detective Conan',font=(fontsfamily, 24),command=song2, height=50 , width= 400, fg_color='#40589c')
-b3.place(relx=0.692,rely=0.41)
+b3.place(relx=0.692 + xshift,rely=0.41)
 
 a4 = ct.CTkLabel(mainfram, text="", image=chihatanimg)
-a4.place(relx=0.207,rely=0.51)
+a4.place(relx=0.207 + xshift,rely=0.51)
 b4 = ct.CTkButton(master=mainfram,text='▶ Chi-Ha-Tan',font=(fontsfamily, 24),command=song4, height=50 , width= 400, fg_color='#40589c')
-b4.place(relx=0.207,rely=0.81)
+b4.place(relx=0.207 + xshift,rely=0.81)
 
 a5 = ct.CTkLabel(mainfram, text="", image=yorunikakeruimg)
-a5.place(relx=0.54,rely=0.51)
+a5.place(relx=0.54 + xshift,rely=0.51)
 b5 = ct.CTkButton(master=mainfram,text='▶ Yoru ni kakeru',font=(fontsfamily, 24),command=song5, height=50 , width= 400, fg_color='#40589c')
-b5.place(relx=0.54,rely=0.81)
+b5.place(relx=0.54 + xshift,rely=0.81)
 
 bstop = ct.CTkButton(master=mainfram, width=180, height=50 , text="■ Stop Music", font=("Segoe UI", 18, "bold") , command=stop , fg_color="#ed4564")
 bstop.place(relx=0.438,rely=0.92)
