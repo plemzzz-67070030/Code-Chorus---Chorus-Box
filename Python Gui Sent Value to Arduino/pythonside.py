@@ -5,69 +5,53 @@ from tkinter import *
 import time
 from PIL import Image, ImageTk
 import pywinstyles #pip install pywinstyles
-#ser = serial.Serial("COM4",baudrate=9600,timeout=1)
+ser = serial.Serial("COM4",baudrate=9600,timeout=1)
 
 song1Name = "Evangelion - Cruel Angel Thesis"
 song2Name = "Conan OST"
 song3Name = "Night Dancer"
-song4Name = ""
-song5Name = ""
+song4Name = "Chihatan"
+song5Name = "Racing Into The Night"
+song6Name = "Fly Me To The Moon"
 
 NameList = ["67070003 กฤษกร","67070029 ชยกร","67070030 ชยากร","67070008 ก้องภพ","67070128 ภาคภูมิ"] #ใส่ชื่อคนที่ละคน
 stylelist = ["aero","acrylic","transparent","optimised","win7","inverse","native","popup","dark","mica","normal"] #โหมดหน้าต่าง
 
 PlayingSong = ""
-
 ct.set_appearance_mode("Dark")
 #function
 
-def update ():
-    time.sleep(.3)
-    T.configure(text=f"Now Playing: {PlayingSong}")
-
 def song1 ():
-
-    #ser.write(b'a')
-    global PlayingSong
-    PlayingSong = song1Name
-    T.configure(text=f"Playing: Stop")
-    update()
+    ser.write(b'a')
 
 def song2 ():
-    #ser.write(b'b')
-    global PlayingSong
-    PlayingSong = song2Name
-    T.configure(text=f"Playing: Stop")
-    update()
+    ser.write(b'b')
 
 def song3 ():
-    ##ser.write(b'c')
-    global PlayingSong
-    PlayingSong = song3Name
-    update()
+    ser.write(b'c')
 
 def song4 ():
-    #ser.write(b'd')
-    global PlayingSong
-    PlayingSong = song4Name
-    update()
+    ser.write(b'd')
 
 def song5 ():
-    #ser.write(b'e')
-    global PlayingSong
-    PlayingSong = song5Name
-    update()
+    ser.write(b'e')
 
-def stop() :
-    #ser.write(b'stop')
-    global PlayingSong
-    PlayingSong = "Stop"
-    update()
+def song6 ():
+    ser.write(b'f')
 
 def change_windowstyles (choice):
     print(choice)
     pywinstyles.apply_style(root,"normal")
     pywinstyles.apply_style(root, choice)
+
+def read_serial(): #ฟังก์ชั่นสำหรับรับค่าจาก Arduino ไว้ใช้เปลี่ยนสถานะของเพลง
+    global PlayingSong
+    if ser.in_waiting > 0:
+        response = ser.readline().decode('utf-8').strip() #ตัวแปรที่รับค่ากลับมา
+        if response and not response.isspace():
+            PlayingSong = response
+            T.configure(text=f"Now Playing: {PlayingSong}")
+    root.after(100, read_serial) #รันเช็คค่าที่รับเข้ามาตลอด
 
 
 #root setting     
@@ -176,14 +160,12 @@ b5.place(relx=0.372 + xshift,rely=0.81)
 
 a6 = ct.CTkLabel(mainfram, text="", image=moonimg)
 a6.place(relx=0.692 + xshift,rely=0.51)
-b6 = ct.CTkButton(master=mainfram,text='▶ Fly me to the moon',font=(fontsfamily, 24),command=song5, height=50 , width= 400, fg_color='#40589c')
+b6 = ct.CTkButton(master=mainfram,text='▶ Fly me to the moon',font=(fontsfamily, 24),command=song6, height=50 , width= 400, fg_color='#40589c')
 b6.place(relx=0.692 + xshift,rely=0.81)
-
-bstop = ct.CTkButton(master=mainfram, width=180, height=50 , text="■ Stop Music", font=("Segoe UI", 18, "bold") , command=stop , fg_color="#ed4564")
-bstop.place(relx=0.413,rely=0.92)
 
 #Status Bar
 T = ct.CTkLabel(statusbar,height= 30,fg_color="transparent",font=(fontsfamily,14),text=(f"Now Playing : {PlayingSong} ") )
 T.pack(side= "left")
 
+read_serial()
 root.mainloop()#runTkinter
