@@ -115,6 +115,9 @@ chihatanimg = ct.CTkImage(light_image=Image.open('images/chihatan.jpg'),
 yorunikakeruimg = ct.CTkImage(light_image=Image.open('images/yorunikakeru.jpg'),
 	dark_image=Image.open('images/yorunikakeru.jpg'),
 	size=(400,250))
+moonimg = ct.CTkImage(light_image=Image.open('images/moon.png'),
+	dark_image=Image.open('images/moon.png'),
+	size=(400,250))
 ###
 
 #topbar
@@ -162,17 +165,22 @@ b3 = ct.CTkButton(master=mainfram,text='▶ Detective Conan',font=(fontsfamily, 
 b3.place(relx=0.692 + xshift,rely=0.41)
 
 a4 = ct.CTkLabel(mainfram, text="", image=chihatanimg)
-a4.place(relx=0.207 + xshift,rely=0.51)
+a4.place(relx=0.052 + xshift,rely=0.51)
 b4 = ct.CTkButton(master=mainfram,text='▶ Chi-Ha-Tan',font=(fontsfamily, 24),command=song4, height=50 , width= 400, fg_color='#40589c')
-b4.place(relx=0.207 + xshift,rely=0.81)
+b4.place(relx=0.052 + xshift,rely=0.81)
 
 a5 = ct.CTkLabel(mainfram, text="", image=yorunikakeruimg)
-a5.place(relx=0.54 + xshift,rely=0.51)
+a5.place(relx=0.372 + xshift,rely=0.51)
 b5 = ct.CTkButton(master=mainfram,text='▶ Yoru ni kakeru',font=(fontsfamily, 24),command=song5, height=50 , width= 400, fg_color='#40589c')
-b5.place(relx=0.54 + xshift,rely=0.81)
+b5.place(relx=0.372 + xshift,rely=0.81)
+
+a6 = ct.CTkLabel(mainfram, text="", image=moonimg)
+a6.place(relx=0.692 + xshift,rely=0.51)
+b6 = ct.CTkButton(master=mainfram,text='▶ Fly me to the moon',font=(fontsfamily, 24),command=song5, height=50 , width= 400, fg_color='#40589c')
+b6.place(relx=0.692 + xshift,rely=0.81)
 
 bstop = ct.CTkButton(master=mainfram, width=180, height=50 , text="■ Stop Music", font=("Segoe UI", 18, "bold") , command=stop , fg_color="#ed4564")
-bstop.place(relx=0.438,rely=0.92)
+bstop.place(relx=0.413,rely=0.92)
 
 #Status Bar
 T = ct.CTkLabel(statusbar,height= 30,fg_color="transparent",font=(fontsfamily,14),text=(f"Now Playing : {PlayingSong} ") )
