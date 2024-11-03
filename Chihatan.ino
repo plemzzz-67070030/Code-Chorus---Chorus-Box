@@ -1,5 +1,4 @@
 int buzzer_Melody = 13;
-int buzzer_Duet = 12;
 float notes[] = {130.8, 138.6, 146.8, 155.6, 164.8, 174.6, 185.0, 196.0, 207.7, 220, 233.1, 246.9}; 
 // C, C#, D, D#, E, F, F#, G, G#, A, A#, B
 
@@ -17,17 +16,9 @@ void playNote(float frequency, int duration) {
   tone(buzzer_Melody, frequency);
   delay(duration);
 }
-void playNote_Duet(float frequency, int duration) {
-  tone(buzzer_Duet, frequency);
-  delay(duration);
-}
 
 void restNote(int duration) {
   noTone(buzzer_Melody);
-  delay(duration);
-}
-void restNote_duet(int duration) {
-  noTone(buzzer_Duet);
   delay(duration);
 }
 
@@ -71,11 +62,8 @@ void Chihatan(){
   playNote(notes[7] * 2, 750/tempo);
   playNote(notes[9] * 2, 250/tempo);
   playNote(notes[2] * 4, 1000/tempo);
-  playNote_Duet(notes[5] * 2, 1000/tempo);
   restNote(30);
-  restNote_duet(30);
   playNote(notes[2] * 4, 1000/tempo);
-  playNote_Duet(notes[5] * 2, 1000/tempo);
   playNote(notes[4] * 4, 1000/tempo);
 
   //ห้องที่ 8
@@ -144,21 +132,14 @@ void Chihatan(){
   //ห้องที่ 18
   playNote(notes[7] * 2, 2000/tempo);
   playNote(notes[4] * 2, 750/tempo);
-  playNote_Duet(notes[0] * 2, 750/tempo);
   playNote(notes[7] * 2, 250/tempo);
-  playNote_Duet(notes[4] * 2, 250/tempo);
   restNote(30);
-  restNote_duet(30);
 
   //ห้องที่ 19
   playNote(notes[7] * 2, 1000/tempo);
-  playNote_Duet(notes[4] * 2, 1000/tempo);
   restNote(30);
-  restNote_duet(30);
   playNote(notes[7] * 2, 1000/tempo);
-  playNote_Duet(notes[4] * 2, 1000/tempo);
   restNote(750/tempo);
-  restNote_duet(750/tempo);
   playNote(notes[7] * 2, 250/tempo);
 
   //ห้องที่ 20
@@ -171,23 +152,16 @@ void Chihatan(){
 
   //ห้องที่ 21
   playNote(notes[9] * 2, 750/tempo);
-  playNote_Duet(notes[5] * 2, 750/tempo);
   playNote(notes[7] * 2, 250/tempo);
-  playNote_Duet(notes[4] * 2, 500/tempo);
   playNote(notes[9] * 2, 750/tempo);
-  playNote_Duet(notes[5] * 2, 750/tempo);
   playNote(notes[0] * 4, 1000/tempo);
-  playNote_Duet(notes[9] * 2, 1000/tempo);
 
   //ห้องที่ 22
   playNote(notes[2] * 4, 750/tempo);
-  playNote_Duet(notes[10] * 4, 750/tempo);
   playNote(notes[4] * 4, 250/tempo);
-  playNote_Duet(notes[0] * 4, 250/tempo);
   playNote(notes[2] * 4, 1500/tempo);
   playNote(notes[11] * 4, 1500/tempo);
   restNote(500/tempo);
-  restNote_duet(500/tempo);
 
   //ห้องที่ 23
   playNote(notes[4] * 4, 750/tempo);
@@ -343,24 +317,15 @@ void Chihatan(){
 
   //ห้องที่ 47
   playNote(notes[9] * 2, 750/tempo);
-  playNote_Duet(notes[5] * 2, 750/tempo);
   playNote(notes[7] * 2, 250/tempo);
-  playNote_Duet(notes[4] * 2, 250/tempo);
   playNote(notes[9] * 2, 1000/tempo);
-  playNote_Duet(notes[5] * 2, 1000/tempo);
   playNote(notes[0] * 2, 1000/tempo);
-  playNote_Duet(notes[9] * 2, 1000/tempo);
-
   //ห้องที่ 48
   playNote(notes[2] * 2, 750/tempo);
-  playNote_Duet(notes[11] * 2, 750/tempo);
   playNote(notes[4] * 2, 250/tempo);
-  playNote_Duet(notes[0] * 2, 250/tempo);
   playNote(notes[2] * 2, 750/tempo);
   playNote(notes[11] * 2, 750/tempo);
   restNote(500/tempo);
-  restNote_duet(500/tempo);
-
   //ห้องที่ 49
   playNote(notes[4] * 4, 750/tempo);
   playNote(notes[2] * 4, 250/tempo);
