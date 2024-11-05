@@ -41,6 +41,11 @@ void loop() {
       racing_into_the_night();
       
     }
+    else if (python == 'f') {
+      Serial.println("Fly Me To The Moon");
+      FlyMeToTheMoon();
+      
+    }
   }
 }
 void playNote(float frequency, int duration) {
